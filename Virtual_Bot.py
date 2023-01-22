@@ -54,9 +54,13 @@ def understanding_English():
     
     elif "president" in you:
         robot_brain = "Joe Biden"
-    elif "software" in you:
+    elif "software" in you:   #When we add a function in brain of English => we need to change robot_brain="_" at the end
         open_application_EN()
         robot_brain = ""
+    elif "website" in you:
+        open_website_EN()
+        robot_brain= ""
+
     elif "stop" in you:
         robot_brain="I will stop the program"
     else:
@@ -67,6 +71,31 @@ def understanding_English():
 def speaking_EngLish(robot_brain):
     robot_mouth.say(robot_brain)
     robot_mouth.runAndWait()
+
+def open_website_EN():
+    speaking_EngLish("Which website do you want to access")
+    print("We have: ")
+    print("1. Facebook")
+    print("2. New York Times")
+    print("3. Github")
+    print("4. StackOverFlow")
+    print("5. Youtube")
+    website = input("Website's name: ")
+
+    if website == "1":
+        webbrowser.open("https://www.facebook.com/")
+        
+    elif website=="2":
+        webbrowser.open("https://www.nytimes.com/")
+    elif website=="3":
+        webbrowser.open("https://github.com/")
+    elif website=="4":
+        webbrowser.open("https://stackoverflow.com/")
+    elif website=="5":
+        webbrowser.open("https://www.youtube.com/")
+
+    speaking_Vietnamese("Trang web bạn yêu cầu đã được mở.")
+    
     
 def open_application_EN():
     speaking_EngLish("Which software do you want to open")
@@ -160,21 +189,39 @@ def open_website_VN():
     print("3. Github")
     print("4. StackOverFlow")
     print("5. Youtube")
-    website = input("Tên Ứng Dụng: ")
+    website = input("Tên Website: ")
 
     if website == "1":
         webbrowser.open("https://www.facebook.com/")
         
     elif website=="2":
-        webbrowser.open("https://www.facebook.com/")
+        webbrowser.open("https://www.nytimes.com/")
     elif website=="3":
-        webbrowser.open("https://www.facebook.com/")
+        webbrowser.open("https://github.com/")
     elif website=="4":
-        webbrowser.open("https://www.facebook.com/")
+        webbrowser.open("https://stackoverflow.com/")
     elif website=="5":
-        webbrowser.open("https://www.facebook.com/")
+        webbrowser.open("https://www.youtube.com/")
 
     speaking_Vietnamese("Trang web bạn yêu cầu đã được mở.")
+
+def send_email_VN():
+    speaking_Vietnamese('Bạn gửi email cho ai nhỉ')
+    recipient = input("Email của người bạn muốn gửi")
+    if 'yến' in recipient:
+        speaking_Vietnamese('Nội dung bạn muốn gửi là gì')
+        print("Nội Dung: ")
+        content = input()
+        mail = smtplib.SMTP('smtp.gmail.com', 587)
+        mail.ehlo()
+        mail.starttls()
+        mail.login('phuocdn2008@gmail.com', 'onggiaphuoc20082004')
+        mail.sendmail('phuocdn2008@gmail.com',
+                      'phuocdn2008@gmail.com', content.encode('utf-8'))
+        mail.close()
+        speaking_Vietnamese('Email của bạn vùa được gửi. Bạn check lại email nhé hihi.')
+    else:
+        speaking_Vietnamese('Bot không hiểu bạn muốn gửi email cho ai. Bạn nói lại được không?')
 
 #If Choose Option EngLish
 if option=="English":
@@ -192,7 +239,7 @@ elif option=="Vietnamese":
 
 
 
-#If Choose Option Vietnamese
+#If Choose Option Vietnameses
 
     
 
